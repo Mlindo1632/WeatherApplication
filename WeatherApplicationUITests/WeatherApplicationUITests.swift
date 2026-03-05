@@ -2,7 +2,7 @@
 //  WeatherApplicationUITests.swift
 //  WeatherApplicationUITests
 //
-//  Created by Nhlanhla Kubayi on 2026/03/05.
+//  Created by Lindokuhle Khumalo on 2026/03/05.
 //
 
 import XCTest
