@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   WeatherAPI.plist
+   WeatherApplication
+
+   Created by Lindokuhle Khumalo on 2026/03/05.
+   Copyright (c) 2026 ___ORGANIZATIONNAME___. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+    <key>BaseWeatherURL</key>
+    <string>https://api.openweathermap.org/data/2.5/forecast</string>
+
+    <key>WeatherAPIKey</key>
+    <string>c1d0cfce5a1758481f589cc74f65217e</string>
+</dict>
+</plist>
