@@ -29,7 +29,7 @@ struct WeatherServiceCall: WeatherAPIServiceCallProtocol  {
         let parameters: [String: Any] = [
             "q": city,
             "appid": apiKey,
-            "units": "imperial"
+            "units": "metric"
         ]
         
         let response: ForecastResponse = try await networkManager.request(
