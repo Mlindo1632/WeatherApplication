@@ -35,6 +35,7 @@ struct MainClass: Codable {
 
 struct Weather: Codable {
     let main: MainEnum
+    let id: Int
 }
 
 enum MainEnum: String, Codable {

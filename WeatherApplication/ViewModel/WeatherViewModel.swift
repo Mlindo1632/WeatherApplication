@@ -40,6 +40,11 @@ class WeatherViewModel: ObservableObject {
             
             cityName = response.city.name
             forecasts = filterDailyForecast(response.list)
+            
+            if let weatherId = response.list.first?.weather.first?.id {
+                updateWeatherCondition(code: weatherId)
+            }
+            
             print("Decoding success")
             
             navigateToForecast = true
@@ -60,17 +65,32 @@ extension WeatherViewModel {
 
     private func updateWeatherCondition( code: Int) {
         switch code {
-        case 0:
+        case 800:
             weatherCondition = .sunny
             
-        case 1...3:
+        case 801...804:
             weatherCondition = .cloudy
             
-        case 51...67, 80...99:
+        case 200...531:
             weatherCondition = .rainy
             
         default:
             weatherCondition = .sunny
         }
+    }
+}
+
+extension WeatherViewModel {
+    func dayFromDate(_ DateString: String) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss "
+        
+        guard let date = formatter.date(from: DateString) else {
+            return ""
+        }
+        
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: date)
     }
 }

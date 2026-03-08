@@ -28,12 +28,13 @@ struct CitySearchView: View {
                 Button {
                     Task {
                         await viewModel.fetchWeather(for: city)
+                        city = ""
                     }
                 } label: {
                     WeatherButton(title: "Get Forcast")
                 }
-                .background(city.isEmpty ? Color.gray : Color.blue)
-                .disabled(city.trimmingCharacters(in: .whitespaces).isEmpty)
+                .background((viewModel.isLoading || city.trimmingCharacters(in: .whitespaces).isEmpty) ? Color.gray : Color.blue)
+                .disabled(viewModel.isLoading || city.trimmingCharacters(in: .whitespaces).isEmpty)
                 Spacer()
             }
             .padding()
@@ -42,7 +43,7 @@ struct CitySearchView: View {
                 ProgressView()
             }
         }
-        .navigationDestination(isPresented: $viewModel.navigateToForecast) {
+        .fullScreenCover(isPresented: $viewModel.navigateToForecast) {
             ForecastView(viewModel: viewModel)
         }
         .alert(viewModel.alertMessage, isPresented: $viewModel.showAlert) {

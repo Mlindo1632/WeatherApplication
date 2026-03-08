@@ -2,7 +2,7 @@
 //  WeatherButton.swift
 //  WeatherApplication
 //
-//  Created by Nhlanhla Kubayi on 2026/03/06.
+//  Created by Lindokuhle Khumalo on 2026/03/06.
 //
 
 import SwiftUI
