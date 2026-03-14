@@ -12,12 +12,12 @@ struct DismissButton: View {
             Image(systemName: "xmark")
                 .foregroundColor(.white)
                 .padding(20)
-                .font(.title)
+                .font(.caption)
                 .background(Color.black)
                 .clipShape(Circle())
                 .overlay (
                     Circle()
-                        .stroke(Color.white, lineWidth: 4)
+                        .stroke(Color.white, lineWidth: 2)
                 )
         }
     }
