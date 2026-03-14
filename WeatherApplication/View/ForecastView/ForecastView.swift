@@ -13,34 +13,32 @@ struct ForecastView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            backgroundView
-            
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    
-                    HStack {
-                        Text("5 Day forecast in \(viewModel.cityName)")
-                            .font(.custom("Poppins-Regular.ttf", size: 18))
-                            .fontWeight(.bold)
-                            .lineSpacing(0)
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+        
+        NavigationStack {
+            ZStack(alignment: .topTrailing) {
+                backgroundView
+                
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
                         
-                        Spacer()
-                        
-                        Button {
-                            dismiss()
-                        } label: {
-                            DismissButton()
+                        ForEach(viewModel.forecasts, id: \.dtTxt) { forecast in
+                            DayForecastView(
+                                day: viewModel.dayFromDate(forecast.dtTxt),
+                                temprature: Int(forecast.main.temp),
+                                imageName: "Property 1=01.sun-light"
+                            )
                         }
                     }
-                    
-                    ForEach(viewModel.forecasts, id: \.dtTxt) { forecast in
-                        DayForecastView(
-                            day: viewModel.dayFromDate(forecast.dtTxt),
-                            temprature: Int(forecast.main.temp),
-                            imageName: "Property 1=01.sun-light")
+                }
+            }
+            .navigationTitle("5 Day forecast in \(viewModel.cityName)")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        DismissButton()
                     }
                 }
             }
